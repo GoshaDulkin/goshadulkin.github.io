@@ -1,7 +1,6 @@
 const canvas = document.getElementById("tv-static");
 const ctx = canvas.getContext("2d");
 
-// Resize canvas to full screen
 function resizeCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
@@ -9,15 +8,15 @@ function resizeCanvas() {
 window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
 
-// Generate random static frame (gradual, subtle)
+// Generate random static frame
 function drawStatic() {
   const imageData = ctx.createImageData(canvas.width, canvas.height);
   const buffer = new Uint32Array(imageData.data.buffer);
   for (let i = 0; i < buffer.length; i++) {
     const rnd = Math.random();
-    if (rnd < 0.2) buffer[i] = 0xffffffff;       // bright pixel
-    else if (rnd < 0.5) buffer[i] = 0x80ffffff;  // semi-transparent
-    else buffer[i] = 0x00000000;                 // mostly black
+    if (rnd < 0.2) buffer[i] = 0xffffffff;
+    else if (rnd < 0.5) buffer[i] = 0x80ffffff;
+    else buffer[i] = 0x00000000;
   }
   ctx.putImageData(imageData, 0, 0);
 }
@@ -25,11 +24,11 @@ function drawStatic() {
 let staticInterval;
 function startStatic() {
   canvas.style.opacity = "0.3"; // subtle
-  staticInterval = setInterval(drawStatic, 30); // ~30fps
+  staticInterval = setInterval(drawStatic, 30);
 }
 
 function stopStatic() {
-  canvas.style.opacity = "0"; // fade out
+  canvas.style.opacity = "0";
   clearInterval(staticInterval);
 }
 
@@ -40,33 +39,18 @@ document.querySelector(".dont-press").addEventListener("click", () => {
   const tagline = document.querySelector("h5");
   const button = document.querySelector(".dont-press");
 
-  // Start TV static
   startStatic();
 
-  // Add glitch effect
   body.classList.add("glitch");
 
   // Short delay for glitch effect
   setTimeout(() => {
-    // Pre-style everything for They Live BEFORE swapping picture
     body.classList.add("they-live-ready");
-
-    // Swap profile picture
     profilePic.src = "assets/alien.png";
-
-    // Stop static immediately
     stopStatic();
-
-    // Remove glitch effect
     body.classList.remove("glitch");
-
-    // Update tagline
     tagline.textContent = "software engineer";
-
-    // Fade out button smoothly
     button.style.opacity = "0";
-
-    // Apply final theme
     body.classList.add("they-live");
   }, 800);
 });

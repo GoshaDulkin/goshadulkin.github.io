@@ -1,0 +1,152 @@
+/* Matrix-style theme */
+body {
+    margin: 0;
+    height: 100vh;
+    background: #000;
+    color: #00ff00;
+    font-family: monospace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: url("assets/alien-cursor.png") 16 16, auto;
+    transition: all 0.6s ease-in-out;
+  }
+  
+  .container {
+    text-align: center;
+    transform: scale(1.5);
+    transition: all 0.6s ease-in-out;
+  }
+  
+  .profile-pic {
+    width: 225px;
+    height: 225px;
+    border-radius: 50%;
+    border: 3px solid #00ff00;
+    margin-bottom: 20px;
+    object-fit: cover;
+    transition: all 0.6s ease-in-out;
+  }
+  
+  h1 {
+    font-size: 2.5em;
+    text-shadow: 0 0 10px #00ff00;
+  }
+  
+  h5 {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #0f0;
+    transition: all 0.6s ease-in-out;
+  }
+  
+  .links a {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 25px;
+    border: 2px solid #00ff00;
+    border-radius: 8px;
+    color: #00ff00;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    text-shadow: 0 0 5px #00ff00;
+  }
+  
+  .links a:hover {
+    background: #00ff00;
+    color: black;
+  }
+  
+  .dont-press {
+    margin-top: 50px;
+    padding: 15px 40px;
+    font-size: 1.3em;
+    border: 3px solid #00ff00;
+    background: transparent;
+    color: #00ff00;
+    border-radius: 10px;
+    cursor: pointer;
+    text-shadow: 0 0 5px #00ff00;
+    transition: opacity 0.5s ease;
+  }
+  
+  .dont-press:hover {
+    background: #00ff00;
+    color: black;
+  }
+  
+  /* Glitch effect */
+  @keyframes glitch {
+    0% { filter: hue-rotate(0deg) contrast(1) grayscale(0); }
+    20% { filter: hue-rotate(30deg) contrast(2) grayscale(0.5); }
+    40% { filter: hue-rotate(-30deg) contrast(1.5) grayscale(1); }
+    60% { filter: hue-rotate(10deg) contrast(2) grayscale(0.8); }
+    80% { filter: hue-rotate(-10deg) contrast(3) grayscale(1); }
+    100% { filter: hue-rotate(0deg) contrast(1) grayscale(1); }
+  }
+  
+  .glitch {
+    animation: glitch 0.8s steps(2, end);
+  }
+  
+  /* They Live theme */
+  .they-live {
+    background: #111;
+    color: #ccc;
+  }
+  
+  .they-live .profile-pic {
+    border: 3px solid #888;
+  }
+  
+  .they-live .links a {
+    border-color: #888;
+    color: #ccc;
+    text-shadow: none;
+  }
+  
+  .they-live .links a:hover {
+    background: #ccc;
+    color: #111;
+  }
+  
+  #tv-static {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0;                 /* start invisible */
+    transition: opacity 0.6s ease; /* smooth fade in/out */
+  }
+
+  /* Pre-applied styling for the alien picture before it shows */
+.they-live-ready {
+    filter: grayscale(100%) brightness(0.7);
+    transition: filter 0.3s ease;
+  }
+
+/* Pre-apply They Live styles before image swap */
+.they-live-ready h1,
+.they-live-ready h5 {
+  color: #ccc;
+  text-shadow: none;
+}
+
+.they-live-ready .profile-pic {
+  border: 3px solid #888;
+}
+
+.they-live-ready .links a {
+  color: #ccc;
+  border-color: #888;
+  text-shadow: none;
+}
+
+.profile-pic.they-live-ready {
+    filter: grayscale(100%) brightness(0.7);
+    border: 3px solid #888;
+  }
+  
